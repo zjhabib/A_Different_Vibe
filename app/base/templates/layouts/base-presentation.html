@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+
+  <!-- Primary Meta Tags -->
+  <title>
+    Flask Volt Pro - {% block title %}{% endblock %} | AppSeed
+  </title>
+
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+  <link rel="canonical" href="https://appseed.us/admin-dashboards/flask-dashboard-volt-pro">
+
+  <meta content="Themesberg" name="author"/>
+  <meta content="Volt Pro is a Premium Bootstrap 5 Admin Dashboard featuring over 800 components, 10+ plugins and 20 example pages using Vanilla JS." name="description"/>
+  <meta content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, themesberg, themesberg dashboard, themesberg admin dashboard" name="keywords"/>
+  
+  <!-- Open Graph / Facebook -->
+  <meta content="website" property="og:type"/>
+  <meta content="https://demo.themesberg.com/volt-pro" property="og:url"/>
+  <meta content="Volt Pro - Premium Bootstrap 5 Admin Dashboard" property="og:title"/>
+  <meta content="Volt Pro is a Premium Bootstrap 5 Admin Dashboard featuring over 800 components, 10+ plugins and 20 example pages using Vanilla JS." property="og:description"/>
+  <meta content="https://themesberg.s3.us-east-2.amazonaws.com/public/products/volt-pro-bootstrap-5-dashboard/volt-pro-preview.jpg" property="og:image"/>
+  
+  <!-- Twitter -->
+  <meta content="summary_large_image" property="twitter:card"/>
+  <meta content="https://demo.themesberg.com/volt-pro" property="twitter:url"/>
+  <meta content="Volt Pro - Premium Bootstrap 5 Admin Dashboard" property="twitter:title"/>
+  <meta content="Volt Pro is a Premium Bootstrap 5 Admin Dashboard featuring over 800 components, 10+ plugins and 20 example pages using Vanilla JS." property="twitter:description"/>
+  <meta content="https://themesberg.s3.us-east-2.amazonaws.com/public/products/volt-pro-bootstrap-5-dashboard/volt-pro-preview.jpg" property="twitter:image"/>
+  
+  <!-- Favicon -->
+  <link href="/static/assets/img/favicon/apple-touch-icon.png" rel="apple-touch-icon" sizes="120x120"/>
+  <link href="/static/assets/img/favicon/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+  <link href="/static/assets/img/favicon/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+  <link href="/static/assets/img/favicon/site.webmanifest" rel="manifest"/>
+  <link color="#ffffff" href="/static/assets/img/favicon/safari-pinned-tab.svg" rel="mask-icon"/>
+  <meta content="#ffffff" name="msapplication-TileColor"/>
+  <meta content="#ffffff" name="theme-color"/>
+
+  <!-- Fontawesome -->
+  <link href="/static/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"/>
+  <!-- Sweet Alert -->
+  <link href="/static/assets/vendor/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet" type="text/css"/>
+  <!-- Notyf -->
+  <link href="/static/assets/vendor/notyf/notyf.min.css" rel="stylesheet" type="text/css"/>
+  <!-- Full Calendar  -->
+  <link href="/static/assets/vendor/fullcalendar/main.min.css" rel="stylesheet" type="text/css"/>
+  <!-- Dropzone -->
+  <link href="/static/assets/vendor/dropzone/dist/min/dropzone.min.css" rel="stylesheet" type="text/css"/>
+  <!-- Choices  -->
+  <link href="/static/assets/vendor/choices.js/public/assets/styles/choices.min.css" rel="stylesheet" type="text/css"/>
+  <!-- Leaflet JS -->
+  <link href="/static/assets/vendor/leaflet/dist/leaflet.css" rel="stylesheet" type="text/css"/>
+  <!-- Volt CSS -->
+  <link href="/static/assets/css/volt.css" rel="stylesheet" type="text/css"/>
+  <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
+
+  <!-- Specific Page CSS goes HERE  -->
+  {% block stylesheets %}{% endblock stylesheets %}
+
+ </head>
+ <body>
+
+    {% include 'includes/navigation-presentation.html' %}
+
+    {% block content %}{% endblock content %}
+
+    {% include 'includes/footer-presentation.html' %}
+
+    {% include 'includes/scripts.html' %}   
+
+    <!-- Specific Page JS goes HERE  -->
+    {% block javascripts %}{% endblock javascripts %}
+
+</body>
+</html>

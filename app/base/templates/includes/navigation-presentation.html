@@ -1,0 +1,47 @@
+
+    <header class="header-global">
+        <nav id="navbar-main" aria-label="Primary navigation" class="navbar navbar-main navbar-expand-lg navbar-theme-primary pt-4 navbar-dark">
+            <div class="container position-relative">
+                <div class="navbar-collapse collapse mr-auto" id="navbar_global">
+                    <div class="navbar-collapse-header">
+                        <div class="row">
+                            <div class="col-6 collapse-brand">
+                                <a href="/">
+                                    <img src="/static/assets/img/brand/light.svg" alt="Volt logo">
+                                </a>
+                            </div>
+                            <div class="col-6 collapse-close">
+                                <a href="#navbar_global" class="fas fa-times" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" title="close" aria-label="Toggle navigation"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+                        <li class="nav-item mr-2">
+                            <a href="/dashboard.html" class="nav-link">Dashboard</a>
+                        </li>
+                        <li class="nav-item mr-2">
+                            <a href="/page-pricing.html" class="nav-link">Pricing</a>
+                        </li>
+                        <li class="nav-item mr-2">
+                            <a href="/settings.html" class="nav-link">Settings</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="d-flex align-items-center ml-auto">
+                    <a href="https://appseed.us/admin-dashboards/flask-dashboard-volt-pro" 
+                       target="_blank" class="btn btn-secondary text-dark mr-md-3">
+                       <span class="fas fa-shopping-cart mr-2"></span> Buy now
+                    </a>
+                    <a class="btn btn-outline-soft d-none d-lg-block" 
+                        href="{{ url_for('base_blueprint.logout') }}">
+                        <span class="fas fa-sign-out-alt">
+                        </span>
+                        Logout
+                    </a>                       
+                    <button class="navbar-toggler ml-2" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>

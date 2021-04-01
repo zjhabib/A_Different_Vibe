@@ -1,0 +1,35 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Maps {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+      <div class="py-4">
+            <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
+                  <li class="breadcrumb-item"><a href="#"><span class="fas fa-home"></span></a></li>
+                  <li class="breadcrumb-item active" aria-current="page">MapBox</li>
+                  </ol>
+            </nav>
+            <div class="d-flex justify-content-between w-100 flex-wrap">
+                  <div class="mb-3 mb-lg-0">
+                  <h1 class="h4">MapBox (Leaflet.js)</h1>
+                  <p class="mb-0">Dozens of reusable components built to provide buttons, alerts, popovers, and more.</p>
+                  </div>
+                  <div>
+                  <a href="https://themesberg.com/docs/volt-bootstrap-5-dashboard/plugins/mapbox/" class="btn btn-outline-gray"><i class="far fa-question-circle mr-1"></i> MapBox Docs</a>
+                  </div>
+            </div>
+      </div>
+
+      <div class="card">
+            <div id="mapbox" class="p-4"></div>
+      </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
