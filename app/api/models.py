@@ -1,19 +1,10 @@
 # -*- encoding: utf-8 -*-
 
 from sqlalchemy import Column, Integer, String
+from app import db
 from datetime import datetime
 
-# rom flask_script import Manager
-# from flask _migrate import Migrate, MigrateCommand
-
-from app import db
-
-# migrate = Migrate(app, db)
-# #anager = Manager(app)
-# manager.add_commaned('db', MigrateCommand)
-
-
-class Tweet(db.Model):
+class Tweets(db.Model):
     __tablename__ = 'Tweets'
 
     tweetID = Column(Integer, primary_key=True)
@@ -81,6 +72,3 @@ class News(db.Model):
 #
 #     def __repr__(self):
 #         return f"Organizations('{self.h_id}')"
-
-# if __name__ == '__main__':
-#    manager.run()
