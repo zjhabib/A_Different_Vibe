@@ -26,10 +26,10 @@ class ProductionConfig(Config):
     SQLALCHEMY_DATABASE_URI = '{}://{}:{}@{}:{}/{}'.format(
         config( 'DB_ENGINE'   , default='postgresql'    ),
         config( 'DB_USERNAME' , default='zanehabib'       ),
-        config( 'DB_PASS'     , default='12365432edxwww'          ),
+        config( 'DB_PASS'     , default='E4e113ee32!'          ),
         config( 'DB_HOST'     , default='localhost'     ),
         config( 'DB_PORT'     , default=5432            ),
-        config( 'DB_NAME'     , default='adv-db' )
+        config( 'DB_NAME'     , default='volt_adv' )
     )
 
 class DebugConfig(Config):

@@ -6,6 +6,15 @@ from flask_login import login_required, current_user
 from app import login_manager
 from jinja2 import TemplateNotFound
 
+@blueprint.route('/landing')
+
+#remove decorater requiring login
+#@login_required
+
+def landing():
+
+    return render_template('landing.html', segment='landing')
+
 @blueprint.route('/dash')
 
 #remove decorater requiring login
