@@ -13,7 +13,6 @@ class Tweets(db.Model):
     userScreen = Column(String())
     userName = Column(String())
     userCreateDt = Column(db.DateTime, default=datetime.utcnow)
-    userUpdateDt = db.Column(db.DateTime(), default=datetime.utcnow, onupdate=datetime.utcnow)
     userDesc = Column(String())
     userFollowerCt = Column(Integer())
     userLocation = Column(String())

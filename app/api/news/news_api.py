@@ -2,6 +2,7 @@ from newsapi.newsapi_client import NewsApiClient
 import sys
 import pandas as pd
 import itertools
+import tweepy
 
 # Credentials for APIs
 
@@ -20,7 +21,7 @@ environment_list = ['climate change', 'sustainability', 'green energy', 'global 
 environment_news_data = []
 
 # Addiction
-addiction_list = ['Addiction', 'Struggles with addiction']
+addiction_list = ['drug addiction', 'alcohol addiction']
 addiction_news_data = []
 
 # Current Hot Topics
@@ -40,11 +41,11 @@ refugee_list = ['refugee rights']
 refugee_news_data = []
 
 # Womens Rights
-women_list = ['womens wages', 'female wages', 'womens rights', 'female rights', 'women control body']
+women_list = ['female wages', 'womens rights']
 women_news_data = []
 
 # Mental Health
-mental_list = ['mental health', 'mental illness', 'cte', 'depression', 'coping with mental illness', 'anxiety']
+mental_list = ['mental health', 'mental illness', 'coping with mental illness', 'living with anxiety']
 mental_news_data = []
 
 # Disability rights
