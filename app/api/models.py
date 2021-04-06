@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-
+from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, Integer, String
 from app import db
 from datetime import datetime
@@ -13,13 +13,39 @@ class Tweets(db.Model):
     userScreen = Column(String())
     userName = Column(String())
     userCreateDt = Column(db.DateTime, default=datetime.utcnow)
-    userUpdateDt = db.Column(db.DateTime(), default=datetime.utcnow, onupdate=datetime.utcnow)
     userDesc = Column(String())
     userFollowerCt = Column(Integer())
     userLocation = Column(String())
 
     def __repr__(self):
         return f"Tweets('{self.tweetID}')"
+
+# Update Tweets table with CSV
+    try:
+        file_name = "csv/twitter_api.csv"
+        data = Load_Data(file_name)
+
+        for i in data:
+            record = Tweets(**{
+                'tweetID': i[1],
+                'tweetText': i[2],
+                'userID': i[3],
+                'userScreen': i[4],
+                'userName': i[5],
+                'userCreateDt': i[6]
+                'userDesc': i[7],
+                'userFollowerCt': i[8],
+                'userLocation': i[9],
+            })
+            s.add(record)  # Add all the records
+
+        s.commit()  # Attempt to commit all the records
+    except:
+        s.rollback()  # Rollback the changes on error
+    finally:
+        s.close()  # Close the connection
+    print
+    "Time elapsed: " + str(time() - t) + " s."  # 0.091s
 
 
 class News(db.Model):
