@@ -1,8 +1,14 @@
 # -*- encoding: utf-8 -*-
-from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, Integer, String
-from app import db
 from datetime import datetime
+from app import db
+import os
+from sqlalchemy import create_engine
+import pandas as pd
+#
+# basedir    = os.path.abspath(os.path.dirname(__file__))
+# SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, '../../db.sqlite3')
+# engine = create_engine(SQLALCHEMY_DATABASE_URI)
 
 class Tweets(db.Model):
     __tablename__ = 'Tweets'
@@ -20,33 +26,9 @@ class Tweets(db.Model):
     def __repr__(self):
         return f"Tweets('{self.tweetID}')"
 
-# Update Tweets table with CSV
-    try:
-        file_name = "csv/twitter_api.csv"
-        data = Load_Data(file_name)
-
-        for i in data:
-            record = Tweets(**{
-                'tweetID': i[1],
-                'tweetText': i[2],
-                'userID': i[3],
-                'userScreen': i[4],
-                'userName': i[5],
-                'userCreateDt': i[6]
-                'userDesc': i[7],
-                'userFollowerCt': i[8],
-                'userLocation': i[9],
-            })
-            s.add(record)  # Add all the records
-
-        s.commit()  # Attempt to commit all the records
-    except:
-        s.rollback()  # Rollback the changes on error
-    finally:
-        s.close()  # Close the connection
-    print
-    "Time elapsed: " + str(time() - t) + " s."  # 0.091s
-
+    # file_name = 'twitter_api_1.csv'
+    # df = pd.read_csv(file_name)
+    # df.to_sql(con=engine, index_label='id', name=db.__tablename__, if_exists='replace')
 
 class News(db.Model):
     __tablename__ = 'News'

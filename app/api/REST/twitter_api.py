@@ -1,3 +1,5 @@
+from sqlalchemy import create_engine
+from app import db
 import sys
 import pandas as pd
 import itertools
@@ -145,3 +147,12 @@ Updated_twitter_dataframe = pd.concat(frames).drop_duplicates()
 # Recreate same csv and use flask call to update db.
 # Will allow for update on startup of application
 Updated_twitter_dataframe.to_csv ('twitter_api.csv', index = False, header=True)
+
+# basedir    = os.path.abspath(os.path.dirname(__file__))
+# SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, '../../db.sqlite3')
+# engine = create_engine(SQLALCHEMY_DATABASE_URI)
+#
+#
+# file_name = '../csv/twitter_api.csv'
+# Updated_twitter_dataframe = pd.read_csv(file_name)
+Updated_twitter_dataframe.to_sql(con=engine, index_label='id', name=db.__tablename__, if_exists='replace')
