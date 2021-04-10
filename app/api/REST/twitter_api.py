@@ -5,7 +5,6 @@ import pandas as pd
 import itertools
 import tweepy
 import os
-from flask_sqlalchemy import SQLAlchemy
 
 # TwitterAPI
 
@@ -99,60 +98,58 @@ def CreateTweetdf(key_list, tweetdata):
     Tweet_DF = tweettoDataFrame(tweetdata, key_list)
     Tweet_DF.drop_duplicates().sort_values(by=['tweetCreated'], ascending=False)
     return (Tweet_DF)
-
-#Race Tweets
-race_tw_df = CreateTweetdf(race_list,race_tweet_data)
-
-# Environment Tweets
-env_tw_df = CreateTweetdf(environment_list,environment_tweet_data)
-
-# Current Tweets
-cur_tw_df = CreateTweetdf(current_list,current_tweet_data)
-
-# LGBT Tweets
-lgbt_tw_df = CreateTweetdf(lgbt_list,lgbt_tweet_data)
-
-# Poverty Tweets
-pov_tw_df = CreateTweetdf(poverty_list,poverty_tweet_data)
-
-# Refugee Tweets
-ref_tw_df = CreateTweetdf(refugee_list,refugee_tweet_data)
-
-# Womens Rights Tweets
-wom_tw_df = CreateTweetdf(women_list,women_tweet_data)
-
-# Addictions Tweets
-add_tw_df = CreateTweetdf(mental_list,mental_tweet_data)
-
-# Mental Health Tweets
-men_tw_df = CreateTweetdf(mental_list,mental_tweet_data)
-
-# Disability Tweets
-dis_tw_df = CreateTweetdf(disability_list,disability_tweet_data)
-
-# Create 1 Df with all tweets
-frames = [race_tw_df, env_tw_df, cur_tw_df, lgbt_tw_df, pov_tw_df, ref_tw_df, wom_tw_df, men_tw_df, add_tw_df, dis_tw_df]
-all_tw_df = pd.concat(frames)
+#
+# #Race Tweets
+# race_tw_df = CreateTweetdf(race_list,race_tweet_data)
+#
+# # Environment Tweets
+# env_tw_df = CreateTweetdf(environment_list,environment_tweet_data)
+#
+# # Current Tweets
+# cur_tw_df = CreateTweetdf(current_list,current_tweet_data)
+#
+# # LGBT Tweets
+# lgbt_tw_df = CreateTweetdf(lgbt_list,lgbt_tweet_data)
+#
+# # Poverty Tweets
+# pov_tw_df = CreateTweetdf(poverty_list,poverty_tweet_data)
+#
+# # Refugee Tweets
+# ref_tw_df = CreateTweetdf(refugee_list,refugee_tweet_data)
+#
+# # Womens Rights Tweets
+# wom_tw_df = CreateTweetdf(women_list,women_tweet_data)
+#
+# # Addictions Tweets
+# add_tw_df = CreateTweetdf(mental_list,mental_tweet_data)
+#
+# # Mental Health Tweets
+# men_tw_df = CreateTweetdf(mental_list,mental_tweet_data)
+#
+# # Disability Tweets
+# dis_tw_df = CreateTweetdf(disability_list,disability_tweet_data)
+#
+# # Create 1 Df with all tweets
+# frames = [race_tw_df, env_tw_df, cur_tw_df, lgbt_tw_df, pov_tw_df, ref_tw_df, wom_tw_df, men_tw_df, add_tw_df, dis_tw_df]
+# all_tw_df = pd.concat(frames)
 
 # Read CSV into dataframe
-twitter_db = pd.read_csv('../csv/twitter_api.csv')
+twitter_db = pd.read_csv('twitter_api.csv')
 
 # Remove CSV with plan to re-add after updating. This is so that
-os.remove('../csv/twitter_api.csv')
+# os.remove('twitter_api.csv')
 
-# Update dataframe with new tweets
-frames = [twitter_db,all_tw_df]
-Updated_twitter_dataframe = pd.concat(frames).drop_duplicates()
+# # Update dataframe with new tweets
+# frames = [twitter_db,all_tw_df]
+# Updated_twitter_dataframe = pd.concat(frames).drop_duplicates()
 
 # Recreate same csv and use flask call to update db.
 # Will allow for update on startup of application
-Updated_twitter_dataframe.to_csv ('twitter_api.csv', index = False, header=True)
+# Updated_twitter_dataframe.to_csv ('twitter_api.csv', index = False, header=True)
 
-# basedir    = os.path.abspath(os.path.dirname(__file__))
-# SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, '../../db.sqlite3')
-# engine = create_engine(SQLALCHEMY_DATABASE_URI)
-#
-#
-# file_name = '../csv/twitter_api.csv'
-# Updated_twitter_dataframe = pd.read_csv(file_name)
+basedir    = os.path.abspath(os.path.dirname(__file__))
+SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, '../../db.sqlite3')
+engine = create_engine(SQLALCHEMY_DATABASE_URI)
+
+Updated_twitter_dataframe = pd.read_csv('twitter_api.csv')
 Updated_twitter_dataframe.to_sql(con=engine, index_label='id', name=db.__tablename__, if_exists='replace')

@@ -8,7 +8,7 @@ from os import path
 
 
 # Integrate custom commands
-from .commands import commands
+# import commands
 
 db = SQLAlchemy()
 login_manager = LoginManager()
@@ -41,6 +41,6 @@ def create_app(config):
     configure_database(app)
 
     # Define the custom commands
-    configure_commands(app)
+    # configure_commands(app)
 
     return app

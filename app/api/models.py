@@ -2,13 +2,7 @@
 from sqlalchemy import Column, Integer, String
 from datetime import datetime
 from app import db
-import os
-from sqlalchemy import create_engine
 import pandas as pd
-#
-# basedir    = os.path.abspath(os.path.dirname(__file__))
-# SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, '../../db.sqlite3')
-# engine = create_engine(SQLALCHEMY_DATABASE_URI)
 
 class Tweets(db.Model):
     __tablename__ = 'Tweets'
@@ -25,10 +19,6 @@ class Tweets(db.Model):
 
     def __repr__(self):
         return f"Tweets('{self.tweetID}')"
-
-    # file_name = 'twitter_api_1.csv'
-    # df = pd.read_csv(file_name)
-    # df.to_sql(con=engine, index_label='id', name=db.__tablename__, if_exists='replace')
 
 class News(db.Model):
     __tablename__ = 'News'

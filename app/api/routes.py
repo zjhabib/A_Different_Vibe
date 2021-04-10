@@ -2,7 +2,6 @@
 
 from app.api import blueprint
 from flask import render_template, redirect, url_for, request
-from app.api.models import Tweets
 from flask_login import login_required, current_user
 from app import login_manager
 from jinja2 import TemplateNotFound
@@ -22,10 +21,7 @@ def landing():
 #@login_required
 
 def dash():
-    file_name = Tweets.file_name
-    print(file_name)
-
-    return render_template('dashboard.html', segment='dash', file_name=file_name)
+    return render_template('dashboard.html', segment='dash')
 
 @blueprint.route('/<template>')
 ##@login_required
