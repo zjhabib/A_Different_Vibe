@@ -1,8 +1,19 @@
 # -*- encoding: utf-8 -*-
-from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, Integer, String
 from app import db
 from datetime import datetime
+from numpy import genfromtxt
+from time import time
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
+
+def Load_Data(file_name):
+    data = genfromtxt(file_name, delimiter=',', skip_header=1, converters={0: lambda s: str(s)})
+    return data.tolist()
+
+Base = declarative_base()
 
 class Tweets(db.Model):
     __tablename__ = 'Tweets'
@@ -20,10 +31,24 @@ class Tweets(db.Model):
     def __repr__(self):
         return f"Tweets('{self.tweetID}')"
 
-# Update Tweets table with CSV
+    if __name__ == "__main__":
+        t = time()
+
+        # Create the database
+        SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'db.sqlite3')
+        engine = create_engine(SQLALCHEMY_DATABASE_URI)
+        Base.metadata.create_all(engine)
+
+        # Create the session
+        session = sessionmaker()
+        session.configure(bind=engine)
+        s = session()
+
+    # Update Tweets table with CSV
     try:
         file_name = "csv/twitter_api.csv"
         data = Load_Data(file_name)
+        print("we are updating")
 
         for i in data:
             record = Tweets(**{
@@ -44,8 +69,7 @@ class Tweets(db.Model):
         s.rollback()  # Rollback the changes on error
     finally:
         s.close()  # Close the connection
-    print
-    "Time elapsed: " + str(time() - t) + " s."  # 0.091s
+    print("Time elapsed: " + str(time() - t) + " s." )
 
 
 class News(db.Model):
